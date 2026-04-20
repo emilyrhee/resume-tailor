@@ -1,0 +1,4 @@
+Project name: Getting to One
+This project is an educational YouTube channel where I teach people concepts 
+from math and computer science. So far, I've made two videos: one about proof 
+by induction, and the other one about when to use classes (OOP).

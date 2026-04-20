@@ -1,0 +1,6 @@
+Project name: Bus Routing Game
+This is a game I'm making using the .NET version of Godot. It is a public
+transportation management game. The player must create bus routes that the 
+city residents want to use to get to their desired destinations. DSA concepts
+have been paramount in development. For example, the road network is created
+with graph theory in mind.
