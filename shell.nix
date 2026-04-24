@@ -54,6 +54,7 @@ pkgs.mkShell {
       fastavro
       filelock
       flask
+      flask-cors
       frozenlist
       fsspec
       greenlet
