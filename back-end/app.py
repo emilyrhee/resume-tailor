@@ -1,9 +1,21 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+
+# A very simple Flask Hello World app for you to get started with...
+
+# from flask import Flask
+
+# app = Flask(__name__)
+
+# @app.route('/')
+# def hello_world():
+#     return 'Hello from Flask!'
+
+
+from flask import Flask, request, jsonify
+from pydantic import BaseModel, ValidationError
 from main import rag_pipeline
 
 
-app = FastAPI()
+app = Flask(__name__)
 
 
 class InvokeRequest(BaseModel):
@@ -11,15 +23,24 @@ class InvokeRequest(BaseModel):
     resume: str
     k: int = 5
 
-@app.post("/invoke")
-def invoke(request: InvokeRequest) -> dict[str, object]:
+@app.route("/invoke", methods=["POST"])
+def invoke():
     try:
-        return rag_pipeline(
-            query=request.query,
-            resume=request.resume,
-            k=request.k
+        data = request.get_json()
+        if data is None:
+            return jsonify({"detail": "Invalid JSON body"}), 400
+
+        validated_request = InvokeRequest(**data)
+
+        result = rag_pipeline(
+            query=validated_request.query,
+            resume=validated_request.resume,
+            k=validated_request.k
         )
+        return jsonify(result), 200
+    except ValidationError as exc:
+        return jsonify({"detail": exc.errors()}), 422
     except FileNotFoundError as exc:
-        raise HTTPException(status_code=404, detail=str(exc)) from exc
+        return jsonify({"detail": str(exc)}), 404
     except NotADirectoryError as exc:
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
+        return jsonify({"detail": str(exc)}), 400
