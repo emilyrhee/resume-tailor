@@ -1,3 +1,4 @@
+import os
 from rag.document_loader import load_documents
 from rag.embeddings_model import embeddings
 from rag.text_splitter import text_splitter
@@ -7,7 +8,9 @@ from rag.chat_model import generate_response
 
 
 def rag_pipeline(query: str, resume: str, k: int = 5) -> dict[str, object]:
-    documents = load_documents("back-end/data")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(base_dir, "data")
+    documents = load_documents(data_dir)
 
     split_documents = text_splitter.split_documents(documents)
 

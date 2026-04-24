@@ -2,5 +2,5 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=10, chunk_overlap=2
+    chunk_size=1000, chunk_overlap=100
 )

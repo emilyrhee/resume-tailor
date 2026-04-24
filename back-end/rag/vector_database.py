@@ -3,6 +3,9 @@ from langchain_core.vectorstores import InMemoryVectorStore
 
 class VectorDatabase:
     def __init__(self, texts: list[str], embeddings_model, k: int = 5):
+        if not texts:
+            raise ValueError("No text provided to embed. Check if documents were loaded and split properly.")
+            
         self.vector_store = InMemoryVectorStore.from_texts(
             texts=texts, embedding=embeddings_model
         )

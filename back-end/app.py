@@ -34,3 +34,5 @@ def invoke():
         return jsonify({"detail": str(exc)}), 404
     except NotADirectoryError as exc:
         return jsonify({"detail": str(exc)}), 400
+    except ValueError as exc:
+        return jsonify({"detail": str(exc)}), 400
