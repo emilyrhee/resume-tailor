@@ -51,9 +51,9 @@ pkgs.mkShell {
       cohere
       colorama
       dataclasses-json
-      fastapi
       fastavro
       filelock
+      flask
       frozenlist
       fsspec
       greenlet
