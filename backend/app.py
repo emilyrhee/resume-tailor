@@ -13,6 +13,10 @@ class InvokeRequest(BaseModel):
     resume: str
     k: int = 5
 
+@app.route("/")
+def index():
+    return "<h1>Resume Tailor API is Live!</h1><p>The backend is running successfully.</p>"
+
 @app.route("/invoke", methods=["POST"])
 def invoke():
     try:
