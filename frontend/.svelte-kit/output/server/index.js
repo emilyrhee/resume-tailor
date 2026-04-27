@@ -1,7 +1,7 @@
 import { d as set_public_env, f as app_dir, g as reset, h as override, l as public_env, m as base, p as assets, u as set_private_env, v as __commonJSMin } from "./chunks/environment.js";
 import { S as once, _ as text_decoder, a as split_remote_key, g as get_relative_path, h as base64_encode, i as parse_remote_arg, m as normalize_error, n as TRAILING_SLASH_PARAM, o as stringify$1, p as get_status, r as create_remote_key, t as INVALIDATED_PARAM, v as text_encoder, x as noop, y as stringify } from "./chunks/shared.js";
 import { E as PAGE_METHODS, a as get_node_type, c as has_prerendered_path, d as serialize_uses, f as static_error_page, g as negotiate, h as is_form_content_type, i as get_global_name, l as method_not_allowed, m as s, o as handle_error_and_jsonify, p as escape_html, r as format_server_error, s as handle_fatal_error, t as clarify_devalue_error, u as redirect_response, w as ENDPOINT_METHODS, y as deserialize_binary_form } from "./chunks/utils.js";
-import { S as writable, nt as uneval, x as readable } from "./chunks/dev.js";
+import { C as writable, S as readable, rt as uneval } from "./chunks/dev.js";
 import { _ as has_data_suffix, b as strip_resolution_suffix, d as make_trackable, f as normalize_path, g as add_resolution_suffix, h as add_data_suffix, i as validate_page_server_exports, l as decode_pathname, m as noop_span, n as validate_layout_server_exports, o as find_route, p as resolve, r as validate_page_exports, s as hash, t as validate_layout_exports, u as disable_search, v as has_resolution_suffix, x as compact, y as strip_data_suffix } from "./chunks/exports.js";
 import { a as set_read_implementation, i as set_manifest, n as options, r as read_implementation, t as get_hooks } from "./chunks/internal.js";
 import { error, isRedirect, json, text } from "@sveltejs/kit";
@@ -3247,7 +3247,7 @@ async function internal_respond(request, options, manifest, state) {
 		cookies,
 		fetch: null,
 		getClientAddress: state.getClientAddress || (() => {
-			throw new Error(`@sveltejs/adapter-auto does not specify getClientAddress. Please raise an issue`);
+			throw new Error(`@sveltejs/adapter-static does not specify getClientAddress. Please raise an issue`);
 		}),
 		locals: {},
 		params: {},
