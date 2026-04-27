@@ -1,0 +1,80 @@
+{
+  ".svelte-kit/generated/client-optimized/app.js": {
+    "file": "_app/immutable/entry/app.GgNEdCT5.js",
+    "name": "entry/app",
+    "src": ".svelte-kit/generated/client-optimized/app.js",
+    "isEntry": true,
+    "imports": [
+      "_DUDsWiAJ.js",
+      "_Dj6f-nJM.js",
+      "_DEDqjojZ.js"
+    ],
+    "dynamicImports": [
+      ".svelte-kit/generated/client-optimized/nodes/0.js",
+      ".svelte-kit/generated/client-optimized/nodes/1.js",
+      ".svelte-kit/generated/client-optimized/nodes/2.js"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/0.js": {
+    "file": "_app/immutable/nodes/0.C0Hl5AQt.js",
+    "name": "nodes/0",
+    "src": ".svelte-kit/generated/client-optimized/nodes/0.js",
+    "isEntry": true,
+    "imports": [
+      "_DUDsWiAJ.js",
+      "_DEDqjojZ.js"
+    ],
+    "css": [
+      "_app/immutable/assets/0.BkO6-Bv3.css"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/1.js": {
+    "file": "_app/immutable/nodes/1.CR7Y_6_r.js",
+    "name": "nodes/1",
+    "src": ".svelte-kit/generated/client-optimized/nodes/1.js",
+    "isEntry": true,
+    "imports": [
+      "_DUDsWiAJ.js",
+      "_BZQAkhjw.js",
+      "_DEDqjojZ.js"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/2.js": {
+    "file": "_app/immutable/nodes/2.CdybWP52.js",
+    "name": "nodes/2",
+    "src": ".svelte-kit/generated/client-optimized/nodes/2.js",
+    "isEntry": true,
+    "imports": [
+      "_DUDsWiAJ.js",
+      "_DEDqjojZ.js"
+    ]
+  },
+  "_BZQAkhjw.js": {
+    "file": "_app/immutable/chunks/BZQAkhjw.js",
+    "name": "client",
+    "imports": [
+      "_DUDsWiAJ.js"
+    ]
+  },
+  "_DEDqjojZ.js": {
+    "file": "_app/immutable/chunks/DEDqjojZ.js",
+    "name": "disclose-version"
+  },
+  "_DUDsWiAJ.js": {
+    "file": "_app/immutable/chunks/DUDsWiAJ.js",
+    "name": "index-client"
+  },
+  "_Dj6f-nJM.js": {
+    "file": "_app/immutable/chunks/Dj6f-nJM.js",
+    "name": "preload-helper"
+  },
+  "node_modules/.pnpm/@sveltejs+kit@2.58.0_@sveltejs+vite-plugin-svelte@7.0.0_svelte@5.55.4_@typescript-eslin_61e804a72823929e866608b41fbe01be/node_modules/@sveltejs/kit/src/runtime/client/entry.js": {
+    "file": "_app/immutable/entry/start.D_O-odVM.js",
+    "name": "entry/start",
+    "src": "node_modules/.pnpm/@sveltejs+kit@2.58.0_@sveltejs+vite-plugin-svelte@7.0.0_svelte@5.55.4_@typescript-eslin_61e804a72823929e866608b41fbe01be/node_modules/@sveltejs/kit/src/runtime/client/entry.js",
+    "isEntry": true,
+    "imports": [
+      "_BZQAkhjw.js"
+    ]
+  }
+}
