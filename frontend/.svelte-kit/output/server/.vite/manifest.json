@@ -98,8 +98,14 @@
       "_dev.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.jnwzrhH-.css"
+      "_app/immutable/assets/_layout.DHw1l3Kv.css"
     ]
+  },
+  "src/routes/+layout.ts": {
+    "file": "entries/pages/_layout.ts.js",
+    "name": "entries/pages/_layout.ts",
+    "src": "src/routes/+layout.ts",
+    "isEntry": true
   },
   "src/routes/+page.svelte": {
     "file": "entries/pages/_page.svelte.js",

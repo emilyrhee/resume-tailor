@@ -10,25 +10,18 @@ return {
 	assets: new Set(["robots.txt"]),
 	mimeTypes: {".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start._iLuIriw.js",app:"_app/immutable/entry/app.BwLMDJE-.js",imports:["_app/immutable/entry/start._iLuIriw.js","_app/immutable/chunks/DjTdcamZ.js","_app/immutable/chunks/DUDsWiAJ.js","_app/immutable/entry/app.BwLMDJE-.js","_app/immutable/chunks/DUDsWiAJ.js","_app/immutable/chunks/Dj6f-nJM.js","_app/immutable/chunks/DEDqjojZ.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.CZr0wj15.js",app:"_app/immutable/entry/app.CyINHLJ-.js",imports:["_app/immutable/entry/start.CZr0wj15.js","_app/immutable/chunks/Bl6dB7wc.js","_app/immutable/chunks/BO_s_KIx.js","_app/immutable/entry/app.CyINHLJ-.js","_app/immutable/chunks/BO_s_KIx.js","_app/immutable/chunks/Dj6f-nJM.js","_app/immutable/chunks/DEDqjojZ.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
-			__memo(() => import('./nodes/1.js')),
-			__memo(() => import('./nodes/2.js'))
+			__memo(() => import('./nodes/1.js'))
 		],
 		remotes: {
 			
 		},
 		routes: [
-			{
-				id: "/",
-				pattern: /^\/$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 2 },
-				endpoint: null
-			}
+			
 		],
-		prerendered_routes: new Set([]),
+		prerendered_routes: new Set(["/"]),
 		matchers: async () => {
 			
 			return {  };

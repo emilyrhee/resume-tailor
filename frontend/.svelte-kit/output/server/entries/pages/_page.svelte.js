@@ -1,4 +1,4 @@
-import { F as attr, I as escape_html } from "../../chunks/dev.js";
+import { F as escape_html, P as attr } from "../../chunks/dev.js";
 //#region src/routes/+page.svelte
 function _page($$renderer, $$props) {
 	$$renderer.component(($$renderer) => {
