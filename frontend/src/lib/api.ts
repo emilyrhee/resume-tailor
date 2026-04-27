@@ -18,7 +18,7 @@ export interface InvokeResponse {
 }
 
 export async function askAssistant(req: InvokeRequest): Promise<InvokeResponse> {
-    const response = await fetch('http://127.0.0.1:5000/invoke', {
+    const response = await fetch('/invoke', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
