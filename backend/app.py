@@ -17,9 +17,12 @@ class InvokeRequest(BaseModel):
 def index():
     return "<h1>Resume Tailor API is Live!</h1><p>The backend is running successfully.</p>"
 
-@app.route("/invoke", methods=["POST"])
+@app.route("/invoke", methods=["POST", "OPTIONS"])
 def invoke():
     try:
+        if request.method == "OPTIONS":
+            return jsonify({"detail": "CORS preflight response"}), 200
+
         data = request.get_json()
         if data is None:
             return jsonify({"detail": "Invalid JSON body"}), 400
