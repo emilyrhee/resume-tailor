@@ -7,18 +7,36 @@ from rag.prompt_template import build_prompt
 from rag.chat_model import generate_response
 
 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+data_dir = os.path.join(base_dir, "data")
+documents = load_documents(data_dir)
+
+split_documents = text_splitter.split_documents(documents)
+
+vector_db = VectorDatabase(
+    [document.page_content for document in split_documents],
+    embeddings
+)
+
 def rag_pipeline(query: str, resume: str, k: int = 5) -> dict[str, object]:
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    data_dir = os.path.join(base_dir, "data")
-    documents = load_documents(data_dir)
-
-    split_documents = text_splitter.split_documents(documents)
-
-    vector_db = VectorDatabase(
-        [document.page_content for document in split_documents],
-        embeddings,
-        k=k
-    )
+    """
+    Execute a Retrieval-Augmented Generation (RAG) pipeline to generate tailored responses.
+    This function retrieves relevant document chunks based on a query, combines them with
+    resume context, and generates a response using a language model.
+    Args:
+        query (str): The user's question or query to process. Typically what
+        kind of role the candidate is applying for.
+        resume (str): The resume content to include in the context for generation.
+        k (int, optional): The number of top relevant chunks to retrieve. Defaults to 5.
+    Returns:
+        dict[str, object]: A dictionary containing:
+            - "query" (str): The original query.
+            - "k" (int): The number of chunks retrieved.
+            - "retrieved" (list): List of retrieved documents with their similarity scores,
+              each containing "score" (float) and "content" (str).
+            - "generated_prompt" (str): The constructed prompt sent to the model.
+            - "response" (str): The generated response from the language model.
+    """
     top_results = vector_db.get_chunks_with_scores(query, k=k)
 
     context = "\n\n".join([result[0].page_content for result in top_results])
