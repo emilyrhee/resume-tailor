@@ -7,16 +7,22 @@ from rag.prompt_template import build_prompt
 from rag.chat_model import generate_response
 
 
-base_dir = os.path.dirname(os.path.abspath(__file__))
-data_dir = os.path.join(base_dir, "data")
-documents = load_documents(data_dir)
+_vector_db_instance = None
 
-split_documents = text_splitter.split_documents(documents)
+def get_vector_db():
+    global _vector_db_instance
+    if _vector_db_instance is None:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        data_dir = os.path.join(base_dir, "data")
+        documents = load_documents(data_dir)
 
-vector_db = VectorDatabase(
-    [document.page_content for document in split_documents],
-    embeddings
-)
+        split_documents = text_splitter.split_documents(documents)
+
+        _vector_db_instance = VectorDatabase(
+            [document.page_content for document in split_documents],
+            embeddings
+        )
+    return _vector_db_instance
 
 def rag_pipeline(query: str, resume: str, k: int = 5) -> dict[str, object]:
     """
@@ -37,6 +43,7 @@ def rag_pipeline(query: str, resume: str, k: int = 5) -> dict[str, object]:
             - "generated_prompt" (str): The constructed prompt sent to the model.
             - "response" (str): The generated response from the language model.
     """
+    vector_db = get_vector_db()
     top_results = vector_db.get_chunks_with_scores(query, k=k)
 
     context = "\n\n".join([result[0].page_content for result in top_results])
