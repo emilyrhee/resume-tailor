@@ -10,7 +10,7 @@ return {
 	assets: new Set(["robots.txt"]),
 	mimeTypes: {".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.CxKHL-md.js",app:"_app/immutable/entry/app.BJ6V0wFC.js",imports:["_app/immutable/entry/start.CxKHL-md.js","_app/immutable/chunks/DXLjR_cw.js","_app/immutable/chunks/BO_s_KIx.js","_app/immutable/entry/app.BJ6V0wFC.js","_app/immutable/chunks/BO_s_KIx.js","_app/immutable/chunks/Dj6f-nJM.js","_app/immutable/chunks/DEDqjojZ.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.Cl7Y9xpr.js",app:"_app/immutable/entry/app.C-3Lk1-R.js",imports:["_app/immutable/entry/start.Cl7Y9xpr.js","_app/immutable/chunks/DoJk_II4.js","_app/immutable/chunks/BO_s_KIx.js","_app/immutable/entry/app.C-3Lk1-R.js","_app/immutable/chunks/BO_s_KIx.js","_app/immutable/chunks/Dj6f-nJM.js","_app/immutable/chunks/DEDqjojZ.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),

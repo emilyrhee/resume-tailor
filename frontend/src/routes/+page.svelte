@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { askAssistant, type InvokeResponse } from '$lib/api';
+	import { askAssistant, compileLatex, type InvokeResponse } from '$lib/api';
 
 	let query = $state('');
 	let selectedFile = $state<File | null>(null);
 	let isLoading = $state(false);
 	let error = $state<string | null>(null);
 	let result = $state<InvokeResponse | null>(null);
+	
+	let isCompiling = $state(false);
+	let pdfUrl = $state<string | null>(null);
 
 	async function handleSubmit() {
 		if (!query || !selectedFile) {
@@ -16,6 +19,10 @@
 		isLoading = true;
 		error = null;
 		result = null;
+		if (pdfUrl) {
+			URL.revokeObjectURL(pdfUrl);
+			pdfUrl = null;
+		}
 
 		try {
 			let resume = await selectedFile.text();
@@ -31,6 +38,25 @@
 			error = err.message || 'An unexpected error occurred.';
 		} finally {
 			isLoading = false;
+		}
+	}
+	
+	async function handleCompileLatex() {
+		if (!result?.response) return;
+		
+		isCompiling = true;
+		error = null;
+		
+		try {
+			const pdfBlob = await compileLatex(result.response);
+			if (pdfUrl) {
+				URL.revokeObjectURL(pdfUrl);
+			}
+			pdfUrl = URL.createObjectURL(pdfBlob);
+		} catch (err: any) {
+			error = err.message || 'An unexpected error occurred during PDF compilation.';
+		} finally {
+			isCompiling = false;
 		}
 	}
 	
@@ -119,9 +145,26 @@
 					</div>
 				{:else if result}
 					<div class="prose prose-sm max-w-none">
-						<div class="whitespace-pre-wrap text-gray-800 bg-gray-50 p-5 rounded-lg border border-gray-100 mb-6">
+						<div class="whitespace-pre-wrap text-gray-800 bg-gray-50 p-5 rounded-lg border border-gray-100 mb-6 font-mono text-sm max-h-64 overflow-y-auto">
 							{result.response}
 						</div>
+						
+						<div class="mb-6 mb-6 pb-6 border-b border-gray-100">
+							<button 
+								type="button" 
+								onclick={handleCompileLatex} 
+								disabled={isCompiling}
+								class="bg-green-600 text-white py-2 px-4 rounded font-medium hover:bg-green-700 disabled:opacity-50"
+							>
+								{isCompiling ? 'Compiling PDF...' : 'Preview as PDF'}
+							</button>
+						</div>
+
+						{#if pdfUrl}
+							<div class="mb-6 h-[500px] border border-gray-300 rounded-lg overflow-hidden">
+								<iframe src={pdfUrl} class="w-full h-full" title="PDF Preview"></iframe>
+							</div>
+						{/if}
 
 						{#if result.retrieved.length > 0}
 							<div>

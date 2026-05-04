@@ -36,10 +36,38 @@ export async function askAssistant(req: InvokeRequest): Promise<InvokeResponse> 
                     : errData.detail;
             }
         } catch (e) {
-            // ignore JSON parse error
+            // ignore
         }
         throw new Error(errorDetail);
     }
 
     return await response.json();
+}
+
+export async function compileLatex(latex: string): Promise<Blob> {
+    const response = await fetch('/compile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ latex })
+    });
+
+    if (!response.ok) {
+        let errorDetail = `Server error: ${response.status}`;
+        try {
+            const errData = await response.json();
+            if (errData.logs) {
+                console.error(errData.logs);
+                errorDetail = `Compilation Error. See console for logs.`;
+            } else if (errData.detail) {
+                errorDetail = errData.detail;
+            }
+        } catch (e) {
+            // ignore
+        }
+        throw new Error(errorDetail);
+    }
+
+    return await response.blob();
 }
